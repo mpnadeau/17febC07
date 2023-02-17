@@ -6,6 +6,10 @@ jobs:
     machine: true
     steps:
       - run: echo "Hello World!"
+  sayhelloMP:
+    description: Une job qui dit Hello Marie-Pier
+    machine: true
+    steps:
       - run: echo "Hello Marie-Pier"
   displayFiles:
     description: Une job qui affiche les fichiers
@@ -18,5 +22,8 @@ workflows:
     jobs:
       - sayhello
       - displayFiles:
+          requires:
+            - sayhello
+      - sayhelloMP:
           requires:
             - sayhello
