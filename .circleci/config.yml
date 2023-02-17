@@ -6,8 +6,17 @@ jobs:
     machine: true
     steps:
       - run: echo "Hello World!"
+      - run: echo "Hello Marie-Pier"
+  displayFiles:
+    description: Une job qui affiche les fichiers
+    machine: true
+    steps:
+      - run: ls -al
 
 workflows:
   monWorkflow:
     jobs:
       - sayhello
+      - displayFiles:
+          requires:
+            - sayhello
